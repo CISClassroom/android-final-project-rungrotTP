@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GiveShop</string>
+    <string-array name="province">
+        <item>กาฬสินธุ์</item>
+        <item>ขอนแก่น</item>
+        <item>ชัยภูมิ</item>
+        <item>นครพนม</item>
+        <item>นครราชสีมา</item>
+        <item>บึงกาฬ</item>
+        <item>บุรีรัมย์</item>
+        <item>มหาสารคาม</item>
+        <item>มุกดาหาร</item>
+        <item>ยโสธร</item>
+        <item>ร้อยเอ็ด</item>
+        <item>ศรีสะเกษ</item>
+        <item>สกลนคร</item>
+        <item>สุรินทร์</item>
+        <item>หนองคาย</item>
+        <item>หนองบัวลำภู</item>
+        <item>อำนาจเจริญ</item>
+        <item>อุดรธานี</item>
+        <item>อุบลราชธานี</item>
+        <item>เลย</item>
+    </string-array>
+</resources>
