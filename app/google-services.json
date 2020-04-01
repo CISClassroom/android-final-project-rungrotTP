@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "391467934161",
+    "firebase_url": "https://giveshop-22517.firebaseio.com",
+    "project_id": "giveshop-22517",
+    "storage_bucket": "giveshop-22517.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391467934161:android:bda45573e2b763bb99c0f0",
+        "android_client_info": {
+          "package_name": "th.ac.kku.cis.mobileapp.GiveShop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391467934161-odtpgn3d88bs2fojer2uhh3l8433k7vo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.ac.kku.cis.mobileapp.GiveShop",
+            "certificate_hash": "b4412b65aae217c9eb65e36c255cabb759092d4b"
+          }
+        },
+        {
+          "client_id": "391467934161-f87qq0334kjpk0sl599r9fnrupf8ljga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCISxrvIJFEwJNniDjQ14yvFljN-dzmTFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391467934161-f87qq0334kjpk0sl599r9fnrupf8ljga.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
