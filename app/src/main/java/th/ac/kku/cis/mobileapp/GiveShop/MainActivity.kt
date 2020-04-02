@@ -1,6 +1,9 @@
 package th.ac.kku.cis.mobileapp.GiveShop
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var googleClient: GoogleSignInClient
     var newpropro:Boolean = false
+    private val PERMISSION_CODE = 1000;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,17 @@ class MainActivity : AppCompatActivity() {
 
 //login--------
         button.setOnClickListener({ v -> singIn() })
+        //ขออนุญาตเข้าถึง
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                //permission was not enabled
+                val permission = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                //show popup to request permission
+                requestPermissions(permission, PERMISSION_CODE)
+            } else {
+
+            }
+        }
         var gso = GoogleSignInOptions.Builder(
             GoogleSignInOptions.DEFAULT_SIGN_IN
         )
@@ -40,6 +55,24 @@ class MainActivity : AppCompatActivity() {
             .build()
         googleClient = GoogleSignIn.getClient(this, gso)
         auth = FirebaseAuth.getInstance()
+    }
+    //ขออนุญาตเข้าถึง
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        //called when user presses ALLOW or DENY from Permission Request Popup
+        when (requestCode) {
+            PERMISSION_CODE -> {
+                if (grantResults.size > 0 && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED
+                ) {
+
+                } else {
+                    //permission from popup was denied
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                    finish();
+
+                }
+            }
+        }
     }
     private fun newproject() {
         if(newpropro) {

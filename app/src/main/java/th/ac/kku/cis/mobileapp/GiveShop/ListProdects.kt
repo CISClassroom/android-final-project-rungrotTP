@@ -7,18 +7,19 @@ import android.view.View
 import android.widget.Button
 import android.widget.ListView
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_list_prodects.*
 
-class ListProduct : AppCompatActivity() {
+class ListProdects : AppCompatActivity() {
     lateinit var mDatabase: DatabaseReference
     lateinit var adapter: AdapterProduct
     private var listViewItems: ListView? = null
     var toDoGiveShopList: MutableList<GiveShopP>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_product)
+        setContentView(R.layout.activity_list_prodects)
         if (supportActionBar != null) // เอาแถบบนออก
             supportActionBar?.hide()
+
 
 
 
@@ -52,16 +53,15 @@ class ListProduct : AppCompatActivity() {
                         if (map.get("provinceS") == name) {
                             // add data to object
                             val todoItem = GiveShopP.create()
-                            //  todoItem.NewName = map.get("newName") as String?
                             todoItem.ProductName = map.get("productName") as String?
-//                            todoItem.ProductData = map.get("productData") as String?
-//                            todoItem.ProductPrice = map.get("productPrice") as String?
-//                            todoItem.ProductType = map.get("productType") as String?
-//                            todoItem.ProductLocation = map.get("productLocation") as String?
-//                            todoItem.Mobile = map.get("mobile") as String?
-//                            todoItem.ProductEmail = map.get("productEmail") as String?
+                            todoItem.ProductData = map.get("productData") as String?
+                            todoItem.ProductPrice = map.get("productPrice") as String?
+                            todoItem.ProductType = map.get("productType") as String?
+                            todoItem.ProductLocation = map.get("productLocation") as String?
+                            todoItem.Mobile = map.get("mobile") as String?
+                            todoItem.ProductEmail = map.get("productEmail") as String?
 
-                        toDoGiveShopList!!.add(todoItem);
+                            toDoGiveShopList!!.add(todoItem);
                             adapter.notifyDataSetChanged()
                         }
                     }
@@ -70,5 +70,26 @@ class ListProduct : AppCompatActivity() {
             override fun onCancelled(databaseError: DatabaseError) {
             }
         })
+             view2.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem = parent.getItemAtPosition(position) as GiveShopP //ดึง
+            //Toast.makeText(this,selectedItem,Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ShowDetail::class.java)
+             intent.putExtra("ProductName", selectedItem.ProductName)//ส่งไปยัง
+             intent.putExtra("proName", selectedItem.ProductName)
+             intent.putExtra("ProType", selectedItem.ProductType)
+             intent.putExtra("proprice", selectedItem.ProductPrice)
+             intent.putExtra("ProLocation", selectedItem.ProductLocation)
+             intent.putExtra("proData", selectedItem.ProductData)
+             intent.putExtra("ProMobile", selectedItem.Mobile)
+             intent.putExtra("proEmail", selectedItem.ProductEmail)
+             startActivity(intent)
+
+        }
+        val gotoBack: Button = findViewById(R.id.button)
+
+        gotoBack.setOnClickListener {
+            var i = Intent(this, ListProvinces::class.java)
+            startActivity(i)
+        }
     }
 }

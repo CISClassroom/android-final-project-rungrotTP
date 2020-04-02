@@ -19,6 +19,8 @@ class addProducts : AppCompatActivity() {
         setContentView(R.layout.activity_add_products)
         if (supportActionBar != null) // เอาแถบบนออก
             supportActionBar?.hide()
+
+
         GiveShopList = mutableListOf()
         //2 เพิ่มนักศึกษา--------------
         auth = FirebaseAuth.getInstance()
@@ -48,7 +50,7 @@ class addProducts : AppCompatActivity() {
 
 
         Toast.makeText(applicationContext,"Product save successfully", Toast.LENGTH_LONG).show()
-        var i = Intent(this, ListProduct::class.java)
+        var i = Intent(this, ListProdects::class.java)
         i.putExtra("name",name)//ส่งไป ListProduct
         startActivity(i)//รีเฟรชกลับไปหน้าก่อนนี้เพื่อรีเฟรชfirebase มาแสดง
 

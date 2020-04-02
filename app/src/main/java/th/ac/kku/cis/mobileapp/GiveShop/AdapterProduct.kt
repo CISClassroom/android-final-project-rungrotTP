@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import android.content.Context
+import android.provider.ContactsContract
 import android.content.Context  as Context1
 import android.widget.ArrayAdapter
 
@@ -18,6 +19,7 @@ class AdapterProduct(context: android.content.Context, toDoGiveShopList: Mutable
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         // create object from view
         val ProductName: String = itemList.get(position).ProductName as String
+
 
         val view: View
         val vh: ListRowHolder
